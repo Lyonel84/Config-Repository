@@ -1,0 +1,78 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: clientperson
+          uri: http://localhost:8101
+          predicates:
+            - Path=/api/client/person/**
+        - id: clientbusiness
+          uri: http://localhost:8102
+          predicates:
+            - Path=/api/client/business/**
+        - id: productpasive
+          uri: http://localhost:8103
+          predicates:
+            - Path=/api/product/passive/**
+        - id: productactive
+          uri: http://localhost:8104
+          predicates:
+            - Path=/api/product/active/**
+        - id: managementsavingacount
+          uri: http://localhost:8105
+          predicates:
+            - Path=/api/saving-account/**
+        - id: managementcurrentacount
+          uri: http://localhost:8106
+          predicates:
+            - Path=/api/current-account/**
+        - id: managementfixedtermacount
+          uri: http://localhost:8107
+          predicates:
+            - Path=/api/fixed-term-account/**
+        - id: managementcredit
+          uri: http://localhost:8108
+          predicates:
+            - Path=/api/credit/**
+        - id: managementcreditcard
+          uri: http://localhost:8109
+          predicates:
+            - Path=/api/credit-card/**
+        - id: transactionsavingaccount
+          uri: http://localhost:8110
+          predicates:
+            - Path=/api/transaction/saving/**
+        - id: transactioncurrentaccount
+          uri: http://localhost:8111
+          predicates:
+            - Path=/api/transaction/current/**
+        - id: transactionfixedtermaccount
+          uri: http://localhost:8112
+          predicates:
+            - Path=/api/transaction/fixed-term/**
+        - id: transactioncredit
+          uri: http://localhost:8113
+          predicates:
+            - Path=/api/transaction/credit/**
+        - id: transactioncreditcard
+          uri: http://localhost:8114
+          predicates:
+            - Path=/api/transaction/credit-card/**
+        - id: transfer
+          uri: http://localhost:8115
+          predicates:
+            - Path=/api/transfer/**
+        - id: wallet
+          uri: http://localhost:8116
+          predicates:
+            - Path=/api/wallet/**,/api/coin/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 8080
